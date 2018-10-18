@@ -40,7 +40,7 @@ namespace Ntreev.Library
 
                 var assembly = Assembly.GetEntryAssembly();
                 var attr = assembly.GetCustomAttribute(typeof(AssemblyProductAttribute)) as AssemblyProductAttribute;
-                var name = attr == null || attr.Product == AppDomain.CurrentDomain.FriendlyName ? null : attr.Product;
+                var name = attr == null || attr.Product == AppDomain.CurrentDomain.FriendlyName ? attr?.Product : attr.Product;
                 if (AppDomain.CurrentDomain.FriendlyName.EndsWith("vshost.exe") == true)
                     return name + ".vshost";
                 return name;

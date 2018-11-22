@@ -180,7 +180,16 @@ namespace Ntreev.Library.IO
 
         public static bool IsAbsolute(string filename)
         {
-            return new Uri(filename, UriKind.RelativeOrAbsolute).IsAbsoluteUri;
+            // svnadmin 으로 저장소를 복구한 경우 mac os 환경에서 절대 경로를 IsAbsoluteUri=false 를 반환하는 버그
+            // return new Uri(filename, UriKind.RelativeOrAbsolute).IsAbsoluteUri;
+            try
+            {
+                return new Uri(filename).IsAbsoluteUri;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
         public static void Delete(string filename)

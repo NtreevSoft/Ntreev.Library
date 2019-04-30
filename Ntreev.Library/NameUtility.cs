@@ -54,7 +54,9 @@ namespace Ntreev.Library
         {
             if (name.Contains('.') == true)
             {
-                return StringUtility.Split(name, '.').First();
+                var index = name.LastIndexOf(".");
+                return name.Substring(0, index);
+                //return StringUtility.Split(name, '.').First();
             }
             return string.Empty;
         }
@@ -63,7 +65,9 @@ namespace Ntreev.Library
         {
             if (name.Contains('.') == true)
             {
-                return StringUtility.Split(name, '.')[1];
+                var index = name.LastIndexOf(".");
+                return name.Substring(index + 1, name.Length - index - 1);
+                //return StringUtility.Split(name, '.')[1];
             }
             return name;
         }

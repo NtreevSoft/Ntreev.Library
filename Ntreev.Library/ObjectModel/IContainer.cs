@@ -23,12 +23,16 @@ using System.Text;
 
 namespace Ntreev.Library.ObjectModel
 {
-    public interface IContainer<out T> : IReadOnlyCollection<T>, IEnumerable<T>, INotifyCollectionChanged
+    public interface IContainer<TKey, out TValue> : IReadOnlyCollection<TValue>, IEnumerable<TValue>, INotifyCollectionChanged
     {
-        bool ContainsKey(string key);
+        bool ContainsKey(TKey key);
 
-        T this[string key] { get; }
+        TValue this[TKey key] { get; }
 
-        IEnumerable<string> Keys { get; }
+        IEnumerable<TKey> Keys { get; }
+    }
+
+    public interface IContainer<out T> : IContainer<string, T>
+    {
     }
 }

@@ -80,6 +80,7 @@ namespace Ntreev.Library.ObjectModel
         }
 
         public IEnumerable<TKey> Keys => this.dictionary.Keys;
+        public IEnumerable<TValue> Values => this.dictionary.Values;
 
         public event NotifyCollectionChangedEventHandler CollectionChanging;
 
@@ -338,6 +339,7 @@ namespace Ntreev.Library.ObjectModel
         }
 
         public IEnumerable<string> Keys => this.dictionary.Keys;
+        public IEnumerable<T> Values => this.dictionary.Values;
 
         public event NotifyCollectionChangedEventHandler CollectionChanging;
 

@@ -30,6 +30,7 @@ namespace Ntreev.Library.ObjectModel
         TValue this[TKey key] { get; }
 
         IEnumerable<TKey> Keys { get; }
+        IEnumerable<TValue> Values { get; }
     }
 
     public interface IContainer<out T> : IContainer<string, T>

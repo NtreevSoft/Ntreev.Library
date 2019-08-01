@@ -99,7 +99,7 @@ namespace Ntreev.Library
             set { this.id = value; }
         }
 
-        [DataMember]
+        [DataMember(EmitDefaultValue = false)]
         public Guid Token { get; set; }
 
         public static bool operator ==(SignatureDate left, SignatureDate right)

@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>3.7.19204.1728</Version>
-    <AssemblyVersion>3.7.0.0</AssemblyVersion>
-    <FileVersion>3.7.19204.1728</FileVersion>
+    <Version>3.6.19204.1728</Version>
+    <AssemblyVersion>3.6.0.0</AssemblyVersion>
+    <FileVersion>3.6.19204.1728</FileVersion>
     <RepositoryType>git</RepositoryType>
     <PackageLicenseUrl>https://github.com/NtreevSoft/Ntreev.Library/blob/master/LICENSE.md</PackageLicenseUrl>
     <Copyright>Copyright 짤 Ntreev Soft 2018</Copyright>

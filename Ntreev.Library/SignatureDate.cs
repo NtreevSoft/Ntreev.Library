@@ -33,10 +33,9 @@ namespace Ntreev.Library
         private string id;
         private DateTime dateTime;
 
-        public SignatureDate(string user, Guid token)
+        public SignatureDate(string user)
         {
             this.id = user ?? throw new ArgumentNullException(nameof(user));
-            this.Token = token;
             this.dateTime = DateTime.UtcNow;
         }
 
@@ -44,18 +43,12 @@ namespace Ntreev.Library
         {
             this.id = string.Empty;
             this.dateTime = dateTime;
-            Token = default;
         }
 
-        public SignatureDate(string user, DateTime dateTime) : this(user, default, dateTime)
-        {
-        }
-
-        public SignatureDate(string user, Guid token, DateTime dateTime)
+        public SignatureDate(string user, DateTime dateTime)
         {
             this.id = user ?? throw new ArgumentNullException(nameof(user));
             this.dateTime = dateTime;
-            Token = token;
         }
 
         public override string ToString()
@@ -71,7 +64,7 @@ namespace Ntreev.Library
                 throw new InvalidOperationException();
             }
 #endif
-            return new SignatureDate(this.id,  this.Token, this.dateTime.ToLocalTime());
+            return new SignatureDate(this.id, this.dateTime.ToLocalTime());
         }
 
         public SignatureDate ToUniversalValue()
@@ -82,7 +75,7 @@ namespace Ntreev.Library
                 throw new InvalidOperationException();
             }
 #endif
-            return new SignatureDate(this.id, this.Token, this.dateTime.ToUniversalTime());
+            return new SignatureDate(this.id, this.dateTime.ToUniversalTime());
         }
 
         [DataMember(EmitDefaultValue = false)]
@@ -99,14 +92,9 @@ namespace Ntreev.Library
             set { this.id = value; }
         }
 
-        [DataMember(EmitDefaultValue = false)]
-        public Guid Token { get; set; }
-
         public static bool operator ==(SignatureDate left, SignatureDate right)
         {
-            return (left.id == right.id) && 
-                   (left.Token == right.Token) &&
-                   (left.dateTime == right.dateTime);
+            return (left.id == right.id) && (left.dateTime == right.dateTime);
         }
 
         public static bool operator !=(SignatureDate left, SignatureDate right)
@@ -123,11 +111,9 @@ namespace Ntreev.Library
 
         public override int GetHashCode()
         {
-            return HashUtility.GetHashCode(this.id) ^
-                   HashUtility.GetHashCode(this.Token) ^
-                   HashUtility.GetHashCode(this.dateTime);
+            return HashUtility.GetHashCode(this.id) ^ HashUtility.GetHashCode(this.dateTime);
         }
 
-        public static readonly SignatureDate Empty = new SignatureDate(string.Empty, default, DateTime.MinValue);
+        public static readonly SignatureDate Empty = new SignatureDate(string.Empty, DateTime.MinValue);
     }
 }

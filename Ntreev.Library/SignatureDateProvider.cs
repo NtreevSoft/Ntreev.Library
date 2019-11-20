@@ -33,7 +33,7 @@ namespace Ntreev.Library
 
         public SignatureDate Provide()
         {
-            return new SignatureDate(this.id, default, this.GetTime());
+            return new SignatureDate(this.id, this.GetTime());
         }
 
         protected virtual DateTime GetTime()
